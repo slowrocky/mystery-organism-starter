@@ -14,22 +14,41 @@ const mockUpStrand = () => {
 };
 
 // Factory object 
-const pAequorFactory = (num,arr) => {
+const pAequorFactory = (num, arr) => {
   let obj = {
     specimenNum: num,
     dna: arr,
 
-    mutate(){
-      while(this.dna[0] === 'A'){
+    mutate() {
+      while (this.dna[0] === 'A') {
         this.dna[0] = returnRandBase();
       }
+      return this;
+    },
+
+    compareDNA(pAequor) {
+      let commonBase = 0;
+      let matchDNA = 0;
+      for(let i=0; i < this.dna.length;i++){
+          if(this.dna[i] === pAequor.dna[i]){
+            commonBase++;
+          }
+      }
+      matchDNA = Math.floor((100*commonBase)/this.dna.length);
+      console.log(`specimen #${this.specimenNum} and specimen #${pAequor.specimenNum} have ${matchDNA}% DNA in common`)
+
     }
   }
-  obj.mutate();
-  return obj;
-}
 
-console.log(pAequorFactory(1,mockUpStrand()));
+  return obj.mutate();
+}
+let a = pAequorFactory(1, mockUpStrand());
+let b = pAequorFactory(2, mockUpStrand())
+
+console.log(a);
+console.log(b);
+
+a.compareDNA(b);
 
 
 
