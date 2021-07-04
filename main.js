@@ -63,6 +63,30 @@ const pAequorFactory = (num, arr) => {
         return true;
       }
       return false;
+    },
+
+    complementStrand() {
+      let complementStrandDNA = [];
+
+      for (let i = 0; i < this.dna.length; i++) {
+        switch (this.dna[i]) {
+          case 'A':
+            complementStrandDNA.push('T');
+            break;
+          case 'T':
+            complementStrandDNA.push('A');
+            break;
+          case 'C':
+            complementStrandDNA.push('G');
+            break;
+          case 'G':
+            complementStrandDNA.push('C');
+            break;
+          default:
+            break;
+        }
+      }
+      return complementStrandDNA;
     }
   }
 
@@ -92,8 +116,14 @@ const surviveFactory = (number) => {
 
 
 // Print 30 survive specimen
-console.log(surviveFactory(30));
+//console.log(surviveFactory(30));
 
+// ComplementStrand test
+/*
+let a = pAequorFactory(1,mockUpStrand());
+console.log(a);
+console.log(a.complementStrand());
+*/
 
 
 
