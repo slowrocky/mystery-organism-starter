@@ -13,6 +13,23 @@ const mockUpStrand = () => {
   return newStrand;
 };
 
+// Factory object 
+const pAequorFactory = (num,arr) => {
+  let obj = {
+    specimenNum: num,
+    dna: arr,
+
+    mutate(){
+      while(this.dna[0] === 'A'){
+        this.dna[0] = returnRandBase();
+      }
+    }
+  }
+  obj.mutate();
+  return obj;
+}
+
+console.log(pAequorFactory(1,mockUpStrand()));
 
 
 
